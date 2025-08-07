@@ -1471,6 +1471,87 @@
             });
         });
         
+        // Mobile-friendly easter eggs
+        let tapCount = 0;
+        let tapTimer;
+        let swipeStartX = 0;
+        let swipeStartY = 0;
+        
+        // Triple-tap the title for mobile easter egg
+        document.querySelector('h1').addEventListener('click', (e) => {
+            tapCount++;
+            clearTimeout(tapTimer);
+            
+            if (tapCount === 3) {
+                e.preventDefault();
+                document.body.classList.add('konami-active');
+                showRandomEasterEgg();
+                setTimeout(() => document.body.classList.remove('konami-active'), 5000);
+                tapCount = 0;
+            }
+            
+            tapTimer = setTimeout(() => {
+                tapCount = 0;
+            }, 500);
+        });
+        
+        // Long press on "Generate Your Worth Manifesto" button
+        let pressTimer;
+        const generateBtn = document.querySelector('button[onclick="generateManifesto()"]');
+        if (generateBtn) {
+            generateBtn.addEventListener('touchstart', (e) => {
+                pressTimer = setTimeout(() => {
+                    alert('✨ Secret Worth Boost Activated! ✨\n\nYour worth cannot be measured in numbers, but if it could, you just went INFINITE!');
+                }, 2000); // 2 second press
+            });
+            
+            generateBtn.addEventListener('touchend', () => {
+                clearTimeout(pressTimer);
+            });
+            
+            generateBtn.addEventListener('touchcancel', () => {
+                clearTimeout(pressTimer);
+            });
+        }
+        
+        // Swipe pattern: right-right-left on any textarea for encouragement
+        let swipePattern = [];
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('touchstart', (e) => {
+                swipeStartX = e.touches[0].clientX;
+                swipeStartY = e.touches[0].clientY;
+            });
+            
+            textarea.addEventListener('touchend', (e) => {
+                const swipeEndX = e.changedTouches[0].clientX;
+                const swipeEndY = e.changedTouches[0].clientY;
+                const diffX = swipeEndX - swipeStartX;
+                const diffY = swipeEndY - swipeStartY;
+                
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        swipePattern.push('right');
+                    } else {
+                        swipePattern.push('left');
+                    }
+                    
+                    swipePattern = swipePattern.slice(-3);
+                    if (swipePattern.join('-') === 'right-right-left') {
+                        const encouragements = [
+                            "You're doing amazing! Keep going!",
+                            "Your insights are pure gold!",
+                            "This is exactly what you needed to capture!",
+                            "Your worth is shining through these words!",
+                            "Future you will thank you for this!"
+                        ];
+                        const msg = encouragements[Math.floor(Math.random() * encouragements.length)];
+                        alert('🌟 ' + msg);
+                        swipePattern = [];
+                    }
+                }
+            });
+        });
+        
         // Keyboard shortcuts and easter eggs
         document.addEventListener('keydown', (e) => {
             // Save shortcut
@@ -1505,8 +1586,8 @@
         // Console easter egg
         console.log('%c Welcome to the Worth Manifesto System! ', 'background: #4C1F4F; color: #E49C24; font-size: 20px; font-weight: bold; padding: 10px;');
         console.log('%c Built with love (and coffee) by Sami Zoss ', 'color: #E96A7E; font-size: 12px;');
-        console.log('Keyboard shortcuts: Ctrl+S to save, Alt+Shift+W for Worth Mode');
-        console.log('Try the Konami code for a surprise!');
+        console.log('Desktop: Ctrl+S to save, Alt+Shift+W for Worth Mode, Konami code for surprise!');
+        console.log('Mobile: Triple-tap the title, long-press Generate button, or swipe right-right-left in any text box!');
     </script>
     
     <!-- Hidden message in source -->
