@@ -1267,15 +1267,16 @@
             
             console.log('Sending payload:', payload);
             
-            // Send to Cassidy webhook as JSON
-            // Cassidy should parse this properly
+            // Send to webhook as form data (works better with no-cors)
+            const formData = new URLSearchParams();
+            Object.keys(payload).forEach(key => {
+                formData.append(key, payload[key]);
+            });
+            
             fetch(WEBHOOK_URL, {
                 method: 'POST',
-                mode: 'no-cors',  // This bypasses CORS
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
+                mode: 'no-cors',  // Required for cross-origin requests
+                body: formData
             })
             .then(response => {
                 document.getElementById('generating').style.display = 'none';
@@ -1418,14 +1419,16 @@
             
             console.log('Test payload:', testPayload);
             
-            // Send to Cassidy as JSON
+            // Send test data as form data
+            const testFormData = new URLSearchParams();
+            Object.keys(testPayload).forEach(key => {
+                testFormData.append(key, testPayload[key]);
+            });
+            
             fetch(WEBHOOK_URL, {
                 method: 'POST',
                 mode: 'no-cors',  // This bypasses CORS but you won't see the response
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(testPayload)
+                body: testFormData
             })
             .then(() => {
                 alert('Test data sent! Check your Zapier webhook history.\n\nNote: The browser cannot see the response due to CORS, but Zapier should have received it.\n\nWebhook URL: ' + WEBHOOK_URL);
