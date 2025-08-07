@@ -1,0 +1,8 @@
+{
+  "name": "2025summittakeawaygeneratory",
+  "version": "1.0.0",
+  "description": "Summit Takeaway Collector",
+  "scripts": {
+    "build": "echo 'No build required'"
+  }
+}
