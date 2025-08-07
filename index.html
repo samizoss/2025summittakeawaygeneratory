@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your Worth Summit 2025 | Note System by Sami Zoss</title>
+    
+    <!-- Modern Font Stack -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Primary Colors */
+            --deep-plum: #4C1F4F;
+            --gold-ochre: #E49C24;
+            --muted-rose: #E96A7E;
+            
+            /* Secondary Colors */
+            --soft-cream: #F8F5F2;
+            --slate-gray: #474747;
+            --teal-pop: #60B2A4;
+            
+            /* Supporting Colors */
+            --light-gray: #F3F4F6;
+            --medium-gray: #9CA3AF;
+            --dark-gray: #1F2937;
+            --white: #FFFFFF;
+            
+            /* Typography */
+            --font-heading: 'DM Sans', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--soft-cream);
+            min-height: 100vh;
+            padding: var(--space-md);
+            color: var(--slate-gray);
+            line-height: 1.6;
+            font-size: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(233, 106, 126, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(228, 156, 36, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(76, 31, 79, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-20px, -20px) rotate(1deg); }
+            66% { transform: translate(20px, -10px) rotate(-1deg); }
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--deep-plum);
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--space-sm);
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--space-sm);
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        p {
+            line-height: 1.7;
+            color: var(--slate-gray);
+        }
+        
+        /* Container */
+        .container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(76, 31, 79, 0.08);
+            position: relative;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-lg);
+            }
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 2px solid var(--soft-cream);
+        }
+        
+        .logo-text {
+            color: var(--deep-plum);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .subtitle {
+            color: var(--gold-ochre);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .sub-subtitle {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+        
+        /* Phase Navigation */
+        .phase-nav {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            padding: var(--space-xs);
+            background: var(--soft-cream);
+            border-radius: 12px;
+        }
+        
+        .phase-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--slate-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-btn:hover {
+            background: rgba(76, 31, 79, 0.05);
+        }
+        
+        .phase-btn.active {
+            background: var(--deep-plum);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(76, 31, 79, 0.2);
+        }
+        
+        /* Phase Content */
+        .phase-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .phase-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Section Headers */
+        .section-header {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .section-header h2 {
+            color: var(--deep-plum);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .section-header p {
+            color: var(--slate-gray);
+            font-size: 1.05rem;
+        }
+        
+        /* Forms */
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+            color: var(--deep-plum);
+            font-size: 0.95rem;
+        }
+        
+        .label-helper {
+            font-weight: 400;
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold-ochre);
+            box-shadow: 0 0 0 3px rgba(228, 156, 36, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+        
+        /* Session Cards */
+        .session-card {
+            background: var(--white);
+            border: 2px solid var(--soft-cream);
+            padding: var(--space-lg);
+            border-radius: 12px;
+            margin-bottom: var(--space-lg);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeInScale 0.5s ease-out backwards;
+        }
+        
+        .session-card:nth-child(1) { animation-delay: 0.1s; }
+        .session-card:nth-child(2) { animation-delay: 0.2s; }
+        .session-card:nth-child(3) { animation-delay: 0.3s; }
+        .session-card:nth-child(4) { animation-delay: 0.4s; }
+        .session-card:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .session-card:hover {
+            border-color: var(--gold-ochre);
+            box-shadow: 0 8px 24px rgba(228, 156, 36, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-md);
+        }
+        
+        .session-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--deep-plum);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .session-meta {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        .session-prompt {
+            background: var(--soft-cream);
+            padding: var(--space-sm);
+            border-radius: 8px;
+            margin-bottom: var(--space-md);
+            border-left: 3px solid var(--gold-ochre);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--slate-gray);
+        }
+        
+        /* Buttons */
+        .btn {
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: var(--deep-plum);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: #3A1840;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(76, 31, 79, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--white);
+            color: var(--deep-plum);
+            border: 2px solid var(--deep-plum);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--deep-plum);
+            color: var(--white);
+        }
+        
+        .btn-accent {
+            background: var(--gold-ochre);
+            color: var(--white);
+        }
+        
+        .btn-accent:hover {
+            background: #C88420;
+            transform: translateY(-2px);
+        }
+        
+        .btn-small {
+            padding: var(--space-xs) var(--space-md);
+            font-size: 0.9rem;
+        }
+        
+        .btn-large {
+            padding: var(--space-md) var(--space-xl);
+            font-size: 1.1rem;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-badge.saved {
+            background: var(--teal-pop);
+            color: var(--white);
+        }
+        
+        .status-badge.empty {
+            background: var(--light-gray);
+            color: var(--medium-gray);
+        }
+        
+        /* Worth Box */
+        .worth-box {
+            background: linear-gradient(135deg, var(--soft-cream), rgba(228, 156, 36, 0.1));
+            border: 2px solid var(--gold-ochre);
+            border-radius: 12px;
+            padding: var(--space-xl);
+            margin: var(--space-xl) 0;
+            text-align: center;
+            position: relative;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(228, 156, 36, 0.2); }
+            50% { box-shadow: 0 8px 30px rgba(228, 156, 36, 0.3); }
+        }
+        
+        .worth-title {
+            font-size: 1.5rem;
+            color: var(--deep-plum);
+            margin-bottom: var(--space-md);
+        }
+        
+        /* Process Timeline */
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .process-step {
+            text-align: center;
+        }
+        
+        .process-number {
+            width: 48px;
+            height: 48px;
+            background: var(--muted-rose);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-sm);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover .process-number {
+            transform: rotate(360deg) scale(1.1);
+            background: var(--deep-plum);
+        }
+        
+        .process-text {
+            font-size: 0.9rem;
+            color: var(--slate-gray);
+            line-height: 1.5;
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: var(--teal-pop);
+            color: var(--white);
+            padding: var(--space-lg);
+            border-radius: 12px;
+            text-align: center;
+            margin: var(--space-lg) 0;
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: var(--space-xl);
+            display: none;
+        }
+        
+        .loading-spinner {
+            border: 4px solid var(--light-gray);
+            border-top: 4px solid var(--gold-ochre);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto var(--space-md);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Easter Eggs & Special Effects */
+        .easter-egg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            font-family: monospace;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .easter-egg.show {
+            opacity: 0.3;
+        }
+        
+        /* Konami code easter egg */
+        .konami-active {
+            animation: rainbow 3s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        /* Button ripple effect */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Focus glow */
+        input:focus, textarea:focus {
+            animation: focusGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes focusGlow {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(228, 156, 36, 0.1); }
+            50% { box-shadow: 0 0 0 6px rgba(228, 156, 36, 0.2); }
+        }
+        
+        /* CTA special animation */
+        .cta-main {
+            animation: ctaPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes ctaPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .cta-main:hover {
+            animation: none;
+        }
+        
+        /* Success celebration */
+        @keyframes celebrate {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+        
+        .success-message.show {
+            animation: celebrate 0.6s ease-out;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 2px solid var(--soft-cream);
+            text-align: center;
+        }
+        
+        .footer-tagline {
+            color: var(--deep-plum);
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-subtitle {
+            color: var(--slate-gray);
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-note {
+            color: var(--medium-gray);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: var(--space-lg);
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-lg {
+            margin-top: var(--space-lg);
+        }
+        
+        .mb-lg {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .gap-md {
+            gap: var(--space-md);
+        }
+        
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        @media (max-width: 768px) {
+            .phase-nav {
+                flex-direction: column;
+            }
+            
+            .process-timeline {
+                grid-template-columns: 1fr;
+            }
+            
+            .flex-center {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="easter-egg" id="easterEgg">systems > chaos</div>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo-text">Know Your Worth</h1>
+            <div class="subtitle">4th Annual Women's Visionary Summit | Thursday, August 7, 2025</div>
+            <div class="sub-subtitle">SD CEO East Women's Business Center | Canopy by Hilton Downtown</div>
+        </div>
+        
+        <div class="phase-nav">
+            <button class="phase-btn active" onclick="switchPhase('setup')">Pre-Summit Setup</button>
+            <button class="phase-btn" onclick="switchPhase('notes')">Live Note Taking</button>
+            <button class="phase-btn" onclick="switchPhase('generate')">Generate Manifesto</button>
+        </div>
+        
+        <!-- PHASE 1: Setup -->
+        <div id="setup" class="phase-content active">
+            <div class="section-header">
+                <h2>Let's Capture Who You Are</h2>
+                <p>Quick intel gathering so your Worth Manifesto hits different. The AI needs context, we need your email, everything else is bonus points.</p>
+            </div>
+            
+            <form id="setupForm">
+                <div class="form-group">
+                    <label>
+                        Your Name
+                        <span class="label-helper">What should we call you?</span>
+                    </label>
+                    <input type="text" id="name" placeholder="Type your truth here...">
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        Email Address*
+                        <span class="label-helper">Where your Worth Manifesto lands (required)</span>
+                    </label>
+                    <input type="email" id="email" required placeholder="you@yourworth.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        Your Work/Business
+                        <span class="label-helper">Employee? Entrepreneur? Both? All valid.</span>
+                    </label>
+                    <input type="text" id="business" placeholder="Marketing Director, Coffee Shop Owner, Doing All The Things...">
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        Current Stage
+                        <span class="label-helper">Where are you in your journey?</span>
+                    </label>
+                    <select id="businessStage">
+                        <option value="">Choose your adventure...</option>
+                        <optgroup label="Entrepreneurs">
+                            <option value="idea">Idea Stage (Pre-launch)</option>
+                            <option value="startup">Startup (0-2 years)</option>
+                            <option value="growth">Growth (2-5 years)</option>
+                            <option value="established">Established (5+ years)</option>
+                        </optgroup>
+                        <optgroup label="Employees/Intrapreneurs">
+                            <option value="entry">Entry Level (0-2 years)</option>
+                            <option value="mid">Mid-Career (3-10 years)</option>
+                            <option value="senior">Senior/Leadership (10+ years)</option>
+                            <option value="transition">Career Transition</option>
+                        </optgroup>
+                        <option value="both">Both (Side Hustle Mode)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        What's Your Biggest Challenge?
+                        <span class="label-helper">The thing keeping you up at 2am</span>
+                    </label>
+                    <textarea id="currentChallenge" placeholder="Getting that promotion, landing bigger clients, work-life balance, all of the above..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        Summit Goals
+                        <span class="label-helper">What wins are you walking away with?</span>
+                    </label>
+                    <textarea id="goals" placeholder="Negotiation tactics, pricing confidence, network connections, permission to dream bigger..."></textarea>
+                </div>
+                
+                <div class="flex-center">
+                    <button type="submit" class="btn btn-primary btn-large">Lock It In & Let's Go →</button>
+                </div>
+            </form>
+            
+        </div>
+        
+        <!-- PHASE 2: Notes -->
+        <div id="notes" class="phase-content">
+            <div class="section-header">
+                <h2>Capture Your Summit Gold</h2>
+                <p>Each session auto-saves. Write what resonates. Skip what doesn't. This is YOUR day.</p>
+            </div>
+            
+            <!-- Keynote -->
+            <div class="session-card">
+                <div class="session-header">
+                    <div>
+                        <div class="session-title">9:00-9:40am: Jeana Goosmann's Keynote</div>
+                        <div class="session-meta">CEO of 25+ attorney firm | Author of "Worth It"</div>
+                    </div>
+                    <span id="keynote-status" class="status-badge empty">Ready</span>
+                </div>
+                <div class="session-prompt">
+                    💡 What made you rethink your pricing OR salary negotiations? Which systematic approach actually feels doable? What truth bomb landed?
+                </div>
+                <textarea id="keynoteNotes" placeholder="That moment when Jeana said..."></textarea>
+                <button class="btn btn-accent btn-small" style="float: right; margin-top: var(--space-sm);" onclick="saveSession('keynote')">Save This Gold ✨</button>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <!-- Panel -->
+            <div class="session-card">
+                <div class="session-header">
+                    <div>
+                        <div class="session-title">10:00-10:40am: Empowerment Panel</div>
+                        <div class="session-meta">Jessica (Construction) | Darci (Printing) | Shania (Coffee) | Chantelle (Fashion)</div>
+                    </div>
+                    <span id="panel-status" class="status-badge empty">Ready</span>
+                </div>
+                <div class="session-prompt">
+                    💬 Whose story hit different? What industry insight applies to YOUR world? Which panelist made you think "if she can, I can"?
+                </div>
+                <textarea id="panelNotes" placeholder="The panelist who made me realize..."></textarea>
+                <button class="btn btn-accent btn-small" style="float: right; margin-top: var(--space-sm);" onclick="saveSession('panel')">Capture This Energy ⚡</button>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <!-- Workshop -->
+            <div class="session-card">
+                <div class="session-header">
+                    <div>
+                        <div class="session-title">11:00-11:40am: Danielle Konechne's Workshop</div>
+                        <div class="session-meta">Grand Sotheby's International Realty | Former Military</div>
+                    </div>
+                    <span id="workshop-status" class="status-badge empty">Ready</span>
+                </div>
+                <div class="session-prompt">
+                    🎯 Which negotiation tactic are you stealing? What preparation method clicked? How will you channel this energy in your next big ask (raise OR rates)?
+                </div>
+                <textarea id="workshopNotes" placeholder="The negotiation framework I'm actually going to use..."></textarea>
+                <button class="btn btn-accent btn-small" style="float: right; margin-top: var(--space-sm);" onclick="saveSession('workshop')">Lock This Strategy 🔒</button>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <!-- Breakouts -->
+            <div class="session-card">
+                <div class="session-header">
+                    <div>
+                        <div class="session-title">1:00-2:00pm: Expert Breakout Sessions</div>
+                        <div class="session-meta">Marketing | Banking | Accounting | Legal</div>
+                    </div>
+                    <span id="breakout-status" class="status-badge empty">Ready</span>
+                </div>
+                <div class="session-prompt">
+                    📚 Which session(s) did you hit? What specific advice landed? What are you implementing Monday morning?
+                </div>
+                <textarea id="breakoutNotes" placeholder="The expert advice that changes everything..."></textarea>
+                <button class="btn btn-accent btn-small" style="float: right; margin-top: var(--space-sm);" onclick="saveSession('breakout')">Save the Specifics 📌</button>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <!-- Overall Reflections -->
+            <div class="session-card" style="border-color: var(--gold-ochre); background: linear-gradient(135deg, var(--white), rgba(228, 156, 36, 0.05));">
+                <div class="session-header">
+                    <div>
+                        <div class="session-title">Your Summit Synthesis</div>
+                        <div class="session-meta">Where insights become commitments</div>
+                    </div>
+                    <span id="overall-status" class="status-badge empty">Waiting</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>The "Holy Shift" Moment</label>
+                    <textarea id="biggestAha" placeholder="That insight that changed everything..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Three Things You're Actually Doing This Week</label>
+                    <textarea id="specificActions" placeholder="Email 5 clients with new rates, ask for that promotion, update LinkedIn to reflect my worth..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Your Worth Commitment</label>
+                    <textarea id="worthCommitment" placeholder="I commit to knowing my worth by... (raising rates 25%, asking for that title change, saying no to undervalued work)"></textarea>
+                </div>
+                
+                <button class="btn btn-primary btn-small" style="float: right;" onclick="saveSession('overall')">Seal This Deal 🎯</button>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <div class="flex-center mt-lg">
+                <button class="btn btn-primary" onclick="saveAllNotes()">Save Everything 💾</button>
+                <button class="btn btn-secondary" onclick="clearAllNotes()">Clear All (Nuclear Option) 🗑️</button>
+            </div>
+            
+            <div class="text-center mt-lg">
+                <button class="btn btn-primary btn-large" onclick="switchPhase('generate')">Ready for My Worth Manifesto →</button>
+            </div>
+            
+            <div id="notesSaved" class="success-message">
+                ✅ Saved! Your insights are safe. Keep capturing or move on to generate your manifesto.
+            </div>
+        </div>
+        
+        <!-- PHASE 3: Generate -->
+        <div id="generate" class="phase-content">
+            <div class="section-header">
+                <h2>Generate Your Worth Manifesto</h2>
+                <p>Your notes + summit wisdom + AI magic = personalized roadmap for knowing (and growing) your worth.</p>
+            </div>
+            
+            <div class="worth-box">
+                <div class="worth-title">Your Personal Worth Manifesto</div>
+                <p style="color: var(--slate-gray); margin-bottom: var(--space-md);">
+                    Turning today's insights into tomorrow's actions
+                </p>
+                
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <div class="process-text">AI reads your summit notes</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <div class="process-text">Connects insights to speakers</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <div class="process-text">Creates your 30-day plan</div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">4</div>
+                        <div class="process-text">Delivers to your inbox</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn btn-primary btn-large" onclick="generateTakeaways()">
+                    Generate My Worth Manifesto & 30-Day Plan
+                </button>
+            </div>
+            
+            <div id="generating" class="loading">
+                <div class="loading-spinner"></div>
+                <p style="color: var(--slate-gray); font-size: 1.1rem;">
+                    Creating your personalized manifesto...<br>
+                    <small>This takes 30-60 seconds. Worth the wait.</small>
+                </p>
+            </div>
+            
+            <div id="generated" class="success-message">
+                <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">Your Worth Manifesto is En Route!</h3>
+                <p style="font-size: 1.05rem; line-height: 1.7;">
+                    Check your email for:<br>
+                    • All your summit notes from today<br>
+                    • Your personalized Worth Statement<br>
+                    • 30-day systematic action plan<br>
+                    • Scripts inspired by summit speakers<br>
+                    • Next steps for systematizing your worth<br><br>
+                    
+                    <small>Can't find it? Check spam or email: sami@samizoss.com</small>
+                </p>
+            </div>
+            
+            <div style="background: var(--soft-cream); padding: var(--space-lg); border-radius: 12px; margin: var(--space-xl) 0; text-align: center;">
+                <p style="color: var(--deep-plum); font-weight: 600; margin-bottom: var(--space-sm);">
+                    What You'll Receive:
+                </p>
+                <p style="color: var(--slate-gray);">
+                    ✓ All your notes from today's sessions<br>
+                    ✓ Personalized insights based on YOUR specific takeaways<br>
+                    ✓ Action items you can implement immediately<br>
+                    ✓ A systematic roadmap for the next 30 days
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <button class="btn btn-secondary" onclick="switchPhase('notes')">← Back to Notes</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-tagline">
+                Powered by coffee, workflows, and women who know their worth.
+            </div>
+            <div class="footer-subtitle">
+                Built by Sami Zoss — automation strategist & local ops nerd.
+            </div>
+            <div class="footer-note" style="margin-bottom: var(--space-xl);">
+                Because no AI can replace what happens when women show up like this.
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(96, 178, 164, 0.08), rgba(96, 178, 164, 0.03)); padding: var(--space-xl); border-radius: 12px; text-align: center; border: 2px solid rgba(96, 178, 164, 0.2);">
+                <h3 style="color: #2C7A7B; margin-bottom: var(--space-md);">Ready to Systematize Your Business?</h3>
+                <p style="color: var(--slate-gray); margin-bottom: var(--space-lg);">This app is just the beginning. Let's build systems that scale with you.</p>
+                <a href="https://samizoss.com" target="_blank" class="btn" style="background: #60B2A4; color: white; padding: var(--space-md) var(--space-xl); border-radius: 8px; font-size: 1.1rem; font-weight: 600; display: inline-block; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='#4A9B8E'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#60B2A4'; this.style.transform='translateY(0)'">
+                    Explore How We Can Work Together
+                </a>
+                <p style="margin-top: var(--space-sm); color: var(--medium-gray); font-size: 0.9rem;">
+                    samizoss.com
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // State management
+        let userData = JSON.parse(localStorage.getItem('summitUserData') || '{}');
+        let konamiCode = [];
+        const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        // Easter egg messages
+        const easterEggs = [
+            'systems > chaos',
+            'worth it since day 1',
+            'OPSNERD reporting for duty',
+            'invoice confidence loading...',
+            'you belong here',
+            'systematic magic in progress',
+            'ctrl+s your worth',
+            'hello, fellow human',
+            'debugging imposter syndrome',
+            'raise your rates, raise your standards'
+        ];
+        
+        // Random easter egg display
+        function showRandomEasterEgg() {
+            const egg = document.getElementById('easterEgg');
+            egg.textContent = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+            egg.classList.add('show');
+            setTimeout(() => egg.classList.remove('show'), 3000);
+        }
+        
+        // Show easter egg occasionally
+        setInterval(() => {
+            if (Math.random() > 0.95) showRandomEasterEgg();
+        }, 30000);
+        
+        function switchPhase(phase) {
+            // Update navigation
+            document.querySelectorAll('.phase-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the right button
+            const phaseMap = {
+                'setup': 0,
+                'notes': 1,
+                'generate': 2
+            };
+            document.querySelectorAll('.phase-btn')[phaseMap[phase]].classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.phase-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            setTimeout(() => {
+                document.getElementById(phase).classList.add('active');
+            }, 100);
+        }
+        
+        // Setup form submission
+        document.getElementById('setupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            userData = {
+                ...userData,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                business: document.getElementById('business').value,
+                businessStage: document.getElementById('businessStage').value,
+                currentChallenge: document.getElementById('currentChallenge').value,
+                goals: document.getElementById('goals').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('summitUserData', JSON.stringify(userData));
+            
+            // Auto-advance to notes
+            setTimeout(() => {
+                switchPhase('notes');
+            }, 300);
+        });
+        
+        function saveSession(sessionType) {
+            const fieldMap = {
+                'keynote': 'keynoteNotes',
+                'panel': 'panelNotes',
+                'workshop': 'workshopNotes',
+                'breakout': 'breakoutNotes'
+            };
+            
+            const statusId = sessionType + '-status';
+            
+            if (sessionType === 'overall') {
+                userData.biggestAha = document.getElementById('biggestAha').value;
+                userData.specificActions = document.getElementById('specificActions').value;
+                userData.worthCommitment = document.getElementById('worthCommitment').value;
+            } else {
+                const fieldId = fieldMap[sessionType];
+                userData[fieldId] = document.getElementById(fieldId).value;
+            }
+            
+            userData[sessionType + 'Saved'] = new Date().toISOString();
+            localStorage.setItem('summitUserData', JSON.stringify(userData));
+            
+            // Update status
+            const statusEl = document.getElementById(statusId);
+            const hasContent = sessionType === 'overall' ? 
+                (userData.biggestAha || userData.specificActions || userData.worthCommitment) :
+                userData[fieldMap[sessionType]];
+            
+            if (hasContent) {
+                statusEl.textContent = 'Saved';
+                statusEl.className = 'status-badge saved';
+            } else {
+                statusEl.textContent = 'Empty';
+                statusEl.className = 'status-badge empty';
+            }
+            
+            // Visual feedback with animation
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Saved!';
+            btn.style.background = 'var(--teal-pop)';
+            btn.style.animation = 'celebrate 0.6s ease-out';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.animation = '';
+            }, 2000);
+            
+            // Celebrate saves
+            if (Math.random() > 0.7) showRandomEasterEgg();
+        }
+        
+        function saveAllNotes() {
+            // Save all fields
+            const fields = ['keynoteNotes', 'panelNotes', 'workshopNotes', 'breakoutNotes', 
+                           'biggestAha', 'specificActions', 'worthCommitment'];
+            
+            fields.forEach(field => {
+                const element = document.getElementById(field);
+                if (element) {
+                    userData[field] = element.value;
+                }
+            });
+            
+            userData.allSaved = new Date().toISOString();
+            localStorage.setItem('summitUserData', JSON.stringify(userData));
+            
+            updateAllStatusIndicators();
+            
+            // Show success with animation
+            const successMsg = document.getElementById('notesSaved');
+            successMsg.style.display = 'block';
+            successMsg.classList.add('show');
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                successMsg.classList.remove('show');
+            }, 3000);
+        }
+        
+        function clearAllNotes() {
+            if (confirm('This will clear ALL your notes. Are you sure?')) {
+                document.querySelectorAll('#notes textarea').forEach(textarea => {
+                    textarea.value = '';
+                });
+                
+                // Keep user info but clear notes
+                const userInfo = {
+                    name: userData.name,
+                    email: userData.email,
+                    business: userData.business,
+                    businessStage: userData.businessStage,
+                    currentChallenge: userData.currentChallenge,
+                    goals: userData.goals
+                };
+                
+                userData = userInfo;
+                localStorage.setItem('summitUserData', JSON.stringify(userData));
+                updateAllStatusIndicators();
+            }
+        }
+        
+        function updateAllStatusIndicators() {
+            const sessions = ['keynote', 'panel', 'workshop', 'breakout'];
+            
+            sessions.forEach(session => {
+                const fieldId = session + 'Notes';
+                const statusId = session + '-status';
+                const statusEl = document.getElementById(statusId);
+                
+                if (userData[fieldId]?.trim()) {
+                    statusEl.textContent = 'Saved';
+                    statusEl.className = 'status-badge saved';
+                } else {
+                    statusEl.textContent = 'Empty';
+                    statusEl.className = 'status-badge empty';
+                }
+            });
+            
+            // Overall section
+            const overallStatus = document.getElementById('overall-status');
+            const hasOverall = userData.biggestAha || userData.specificActions || userData.worthCommitment;
+            
+            if (hasOverall) {
+                overallStatus.textContent = 'Complete';
+                overallStatus.className = 'status-badge saved';
+            } else {
+                overallStatus.textContent = 'Waiting';
+                overallStatus.className = 'status-badge empty';
+            }
+        }
+        
+        function generateTakeaways() {
+            const data = JSON.parse(localStorage.getItem('summitUserData') || '{}');
+            
+            if (!data.email) {
+                alert('Need your email address to send your Worth Manifesto! Head back to setup.');
+                switchPhase('setup');
+                return;
+            }
+            
+            // Check rate limiting - 2 minutes between submissions
+            const lastSubmission = localStorage.getItem('lastSubmissionTime');
+            if (lastSubmission) {
+                const timeSinceLastSubmission = Date.now() - parseInt(lastSubmission);
+                const twoMinutes = 2 * 60 * 1000; // 2 minutes in milliseconds
+                
+                if (timeSinceLastSubmission < twoMinutes) {
+                    const secondsRemaining = Math.ceil((twoMinutes - timeSinceLastSubmission) / 1000);
+                    alert(`Please wait ${secondsRemaining} more seconds before generating again.\n\nYour Worth Manifesto is already being processed and will arrive in your email soon!`);
+                    return;
+                }
+            }
+            
+            // Hide any previous success message
+            document.getElementById('generated').style.display = 'none';
+            document.getElementById('generated').classList.remove('show');
+            
+            // Show loading
+            document.getElementById('generating').style.display = 'block';
+            
+            // Your Cassidy webhook URL
+            const WEBHOOK_URL = 'https://app.cassidyai.com/api/webhook/workflows/cme0vne7y01l2tc0fz0187828';
+            
+            // Prepare the payload matching your Notion database structure
+            const payload = {
+                // Phase 1 - Setup (matches 1 - fields)
+                name: data.name || "",
+                email: data.email || "",
+                business: data.business || "",
+                businessStage: mapBusinessStage(data.businessStage) || "",
+                currentChallenge: data.currentChallenge || "",
+                goals: data.goals || "",
+                
+                // Phase 2 - Session Notes (matches 2 - fields)
+                keynoteNotes: data.keynoteNotes || "",
+                panelNotes: data.panelNotes || "",
+                workshopNotes: data.workshopNotes || "",
+                breakoutNotes: data.breakoutNotes || "",
+                breakoutTrack: determineBreakoutTrack(data), // We'll determine this from notes
+                
+                // Phase 3 - Synthesis (matches 3 - fields)
+                biggestAha: data.biggestAha || "",
+                specificActions: data.specificActions || "",
+                worthCommitment: data.worthCommitment || "",
+                
+                // Phase 4 - System fields
+                submissionDate: new Date().toISOString().split('T')[0],
+                processingStatus: "Received",
+                speakerConnection: determineSpeakerConnection(data), // Auto-determine from notes
+                
+                // Metadata
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer || "direct"
+            };
+            
+            console.log('Sending payload:', payload);
+            
+            // Send to Cassidy webhook as JSON
+            // Cassidy should parse this properly
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',  // This bypasses CORS
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                document.getElementById('generating').style.display = 'none';
+                
+                // Zapier webhooks return 200 OK even with CORS issues
+                // So we'll assume success if we get any response
+                console.log('Response status:', response.status);
+                console.log('Response OK:', response.ok);
+                
+                // Show success (Cassidy usually works even with CORS errors)
+                document.getElementById('generated').style.display = 'block';
+                document.getElementById('generated').classList.add('show');
+                celebrate();
+                
+                // Mark as submitted and save timestamp for rate limiting
+                localStorage.setItem('summitSubmitted', 'true');
+                localStorage.setItem('lastSubmissionTime', Date.now().toString());
+                
+                console.log('✅ Sent to Cassidy webhook - check your Cassidy workflow');
+                return response.text();
+            })
+            .then(text => {
+                console.log('Cassidy response:', text);
+            })
+            .catch(error => {
+                // CORS errors are expected with Cassidy, but the webhook usually still fires
+                console.log('Note: CORS error is normal with Cassidy webhooks');
+                console.log('Error details:', error);
+                
+                document.getElementById('generating').style.display = 'none';
+                
+                // Still show success - Cassidy likely received it despite CORS
+                document.getElementById('generated').style.display = 'block';
+                document.getElementById('generated').classList.add('show');
+                celebrate();
+                
+                // Save timestamp for rate limiting even on CORS error
+                localStorage.setItem('lastSubmissionTime', Date.now().toString());
+                
+                // Save submission details for debugging
+                localStorage.setItem('lastSubmission', JSON.stringify({
+                    payload: payload,
+                    timestamp: new Date().toISOString(),
+                    note: 'CORS error expected but webhook likely succeeded'
+                }));
+                
+                console.log('✅ Likely sent successfully despite CORS error');
+                console.log('Check your Cassidy workflow for the processed data');
+            });
+        }
+        
+        // Helper function to determine breakout track from notes
+        function determineBreakoutTrack(data) {
+            const breakoutNotes = (data.breakoutNotes || "").toLowerCase();
+            
+            if (breakoutNotes.includes('marketing') || breakoutNotes.includes('linda')) return 'Marketing';
+            if (breakoutNotes.includes('banking') || breakoutNotes.includes('bank')) return 'Banking';
+            if (breakoutNotes.includes('accounting') || breakoutNotes.includes('suzanne')) return 'Accounting';
+            if (breakoutNotes.includes('legal') || breakoutNotes.includes('law')) return 'Legal';
+            
+            return ''; // Leave blank if can't determine
+        }
+        
+        // Helper function to determine which speaker resonated most
+        function determineSpeakerConnection(data) {
+            const allNotes = [
+                data.keynoteNotes || "",
+                data.panelNotes || "", 
+                data.workshopNotes || "",
+                data.breakoutNotes || "",
+                data.biggestAha || ""
+            ].join(' ').toLowerCase();
+            
+            // Check for speaker mentions
+            if (allNotes.includes('jeana') || allNotes.includes('systematic')) return 'Jeana';
+            if (allNotes.includes('danielle') || allNotes.includes('negotiation') || allNotes.includes('military')) return 'Danielle';
+            if (allNotes.includes('jessica') || allNotes.includes('construction')) return 'Jessica';
+            if (allNotes.includes('darci') || allNotes.includes('printing')) return 'Darci';
+            if (allNotes.includes('shania') || allNotes.includes('coffee')) return 'Shania';
+            if (allNotes.includes('chantelle') || allNotes.includes('fashion')) return 'Chantelle';
+            
+            return ''; // Leave blank if can't determine
+        }
+        
+        // Helper function to map business stage codes to full names
+        function mapBusinessStage(stage) {
+            const stageMap = {
+                'idea': 'Idea/Pre-launch',
+                'startup': 'Startup (0-2 years)',
+                'growth': 'Growth (2-5 years)', 
+                'established': 'Established (5+ years)',
+                'entry': 'Employee - Entry Level',
+                'mid': 'Employee - Mid-Career',
+                'senior': 'Employee - Senior/Leadership',
+                'transition': 'Career Transition',
+                'both': 'Both (Side Hustle)'
+            };
+            return stageMap[stage] || 'Other';
+        }
+        
+        // Test function for Cassidy webhook setup
+        function sendTestWebhook() {
+            console.log('Sending test data to Cassidy...');
+            
+            const WEBHOOK_URL = 'https://app.cassidyai.com/api/webhook/workflows/cme0vne7y01l2tc0fz0187828';
+            
+            // Test payload with sample data
+            const testPayload = {
+                // Phase 1 - Setup
+                name: "Test Attendee",
+                email: "test@example.com",
+                business: "Test Consulting Business",
+                businessStage: "Growth (2-5 years)",
+                currentChallenge: "Testing the webhook connection",
+                goals: "Make sure Zapier receives data",
+                
+                // Phase 2 - Session Notes
+                keynoteNotes: "Test note from Jeana's keynote about systematic growth",
+                panelNotes: "Test note about Jessica in construction",
+                workshopNotes: "Test note about Danielle's negotiation tactics",
+                breakoutNotes: "Attended marketing breakout with Linda",
+                breakoutTrack: "Marketing",
+                
+                // Phase 3 - Synthesis
+                biggestAha: "Testing is important",
+                specificActions: "1. Test webhook 2. Verify Notion 3. Celebrate",
+                worthCommitment: "I commit to testing everything",
+                
+                // Phase 4 - System fields
+                submissionDate: new Date().toISOString().split('T')[0],
+                processingStatus: "Received",
+                speakerConnection: "Jeana",
+                
+                // Metadata
+                timestamp: new Date().toISOString(),
+                testSubmission: true,
+                userAgent: navigator.userAgent,
+                referrer: "test"
+            };
+            
+            console.log('Test payload:', testPayload);
+            
+            // Send to Cassidy as JSON
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',  // This bypasses CORS but you won't see the response
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(testPayload)
+            })
+            .then(() => {
+                alert('Test data sent! Check your Zapier webhook history.\n\nNote: The browser cannot see the response due to CORS, but Zapier should have received it.\n\nWebhook URL: ' + WEBHOOK_URL);
+                console.log('✅ Test data sent to:', WEBHOOK_URL);
+                console.log('Check: https://zapier.com/app/history');
+            })
+            .catch(error => {
+                console.log('Expected CORS error:', error);
+                alert('Test data likely sent despite error! Check your Zapier webhook history.\n\nThis is normal browser behavior with webhooks.');
+            });
+        }
+        
+        // Load saved data on page load
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('summitUserData');
+            if (saved) {
+                userData = JSON.parse(saved);
+                
+                // Restore form fields
+                Object.keys(userData).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element && userData[key]) {
+                        element.value = userData[key];
+                    }
+                });
+                
+                updateAllStatusIndicators();
+            }
+            
+            // Auto-save on input
+            let autoSaveTimeout;
+            document.querySelectorAll('textarea').forEach(textarea => {
+                textarea.addEventListener('input', () => {
+                    clearTimeout(autoSaveTimeout);
+                    autoSaveTimeout = setTimeout(() => {
+                        userData[textarea.id] = textarea.value;
+                        localStorage.setItem('summitUserData', JSON.stringify(userData));
+                    }, 2000);
+                });
+            });
+        });
+        
+        // Keyboard shortcuts and easter eggs
+        document.addEventListener('keydown', (e) => {
+            // Save shortcut
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveAllNotes();
+            }
+            
+            // Konami code
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-10);
+            if (konamiCode.join('') === konamiPattern.join('')) {
+                document.body.classList.add('konami-active');
+                showRandomEasterEgg();
+                setTimeout(() => document.body.classList.remove('konami-active'), 5000);
+            }
+            
+            // Secret shortcuts
+            if (e.altKey && e.shiftKey && e.key === 'W') {
+                alert('You found the Worth Mode! Your worth just increased by 1000%.');
+            }
+        });
+        
+        // Celebration function
+        function celebrate() {
+            console.log('WORTH MANIFESTO GENERATED!');
+            console.log('Your worth is not determined by an algorithm.');
+            console.log('But we can help you see it more clearly.');
+            showRandomEasterEgg();
+        }
+        
+        // Console easter egg
+        console.log('%c Welcome to the Worth Manifesto System! ', 'background: #4C1F4F; color: #E49C24; font-size: 20px; font-weight: bold; padding: 10px;');
+        console.log('%c Built with love (and coffee) by Sami Zoss ', 'color: #E96A7E; font-size: 12px;');
+        console.log('Keyboard shortcuts: Ctrl+S to save, Alt+Shift+W for Worth Mode');
+        console.log('Try the Konami code for a surprise!');
+    </script>
+    
+    <!-- Hidden message in source -->
+    <!-- 
+    Hey there, view-source friend!
+    You found the secret developer note.
+    If you're reading this, you're probably the kind of person
+    who systematizes things... just like me.
+    Let's connect: samizoss.com
+    PS: Try the Konami code on the page :)
+    -->
+</body>
+</html>
