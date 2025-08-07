@@ -1495,24 +1495,35 @@
             }, 500);
         });
         
-        // Long press on "Generate Your Worth Manifesto" button
-        let pressTimer;
-        const generateBtn = document.querySelector('button[onclick="generateManifesto()"]');
-        if (generateBtn) {
-            generateBtn.addEventListener('touchstart', (e) => {
-                pressTimer = setTimeout(() => {
-                    alert('✨ Secret Worth Boost Activated! ✨\n\nYour worth cannot be measured in numbers, but if it could, you just went INFINITE!');
-                }, 2000); // 2 second press
+        // Double-tap any section title for motivation
+        let sectionTapCount = 0;
+        let sectionTapTimer;
+        document.querySelectorAll('h2').forEach(heading => {
+            heading.style.cursor = 'pointer';
+            heading.addEventListener('click', (e) => {
+                sectionTapCount++;
+                clearTimeout(sectionTapTimer);
+                
+                if (sectionTapCount === 2) {
+                    const motivations = {
+                        'Keynote Notes': "Your attention to detail is your superpower!",
+                        'Panel Discussion Notes': "These connections you're making are brilliant!",
+                        'Workshop Notes': "You're absorbing exactly what you need!",
+                        'Breakout Session Notes': "Your focus on growth is inspiring!",
+                        'Your Biggest "Aha" Moment': "This insight will change everything!",
+                        'Three Specific Actions': "Action-taker alert! You're unstoppable!",
+                        'Your Worth Commitment': "This commitment is your breakthrough moment!"
+                    };
+                    const msg = motivations[heading.textContent] || "You're exactly where you need to be!";
+                    alert('💫 ' + msg);
+                    sectionTapCount = 0;
+                }
+                
+                sectionTapTimer = setTimeout(() => {
+                    sectionTapCount = 0;
+                }, 500);
             });
-            
-            generateBtn.addEventListener('touchend', () => {
-                clearTimeout(pressTimer);
-            });
-            
-            generateBtn.addEventListener('touchcancel', () => {
-                clearTimeout(pressTimer);
-            });
-        }
+        });
         
         // Swipe pattern: right-right-left on any textarea for encouragement
         let swipePattern = [];
@@ -1587,7 +1598,7 @@
         console.log('%c Welcome to the Worth Manifesto System! ', 'background: #4C1F4F; color: #E49C24; font-size: 20px; font-weight: bold; padding: 10px;');
         console.log('%c Built with love (and coffee) by Sami Zoss ', 'color: #E96A7E; font-size: 12px;');
         console.log('Desktop: Ctrl+S to save, Alt+Shift+W for Worth Mode, Konami code for surprise!');
-        console.log('Mobile: Triple-tap the title, long-press Generate button, or swipe right-right-left in any text box!');
+        console.log('Mobile: Triple-tap title, double-tap any section heading, or swipe right-right-left in text boxes!');
     </script>
     
     <!-- Hidden message in source -->
